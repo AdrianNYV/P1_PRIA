@@ -28,9 +28,19 @@ public class GameManager : MonoBehaviour {
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    ParserJson(webRequest.downloadHandler.text);
                     break;
             }
         }
+    }
+
+    private void ParserJson(string Json) {
+        ClaseResponse claseResponse = JsonUtility.FromJson<ClaseResponse>(Json);
+        
+        Debug.Log("Nº de preguntas: " + claseResponse.results.Count);
+        Debug.Log("Caterogía: " + claseResponse.results[0].category);
+        Debug.Log("Tipo de pregunta: " + claseResponse.results[1].type);
+        Debug.Log("Dificultad: " + claseResponse.results[2].difficulty);
+        Debug.Log("Pregunta: " + claseResponse.results[3].question);
     }
 }
