@@ -10,16 +10,14 @@ public class GameManager : MonoBehaviour {
     }
 
     IEnumerator GetRequest(string uri) {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-        {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri)) {
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
 
-            switch (webRequest.result)
-            {
+            switch (webRequest.result) {
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError(pages[page] + ": Error: " + webRequest.error);
