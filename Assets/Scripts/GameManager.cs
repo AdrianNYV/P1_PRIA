@@ -44,10 +44,12 @@ public class GameManager : MonoBehaviour {
         //1º La Categoría
         Debug.Log("Caterogía: " + claseResponse.results[0].category);
         //2º El Tipo
-        Debug.Log("Tipo de pregunta: " + claseResponse.results[1].type);
+        Debug.Log("Tipo de pregunta: " + claseResponse.results[0].type);
         //3º La Dificultad
-        Debug.Log("Dificultad: " + claseResponse.results[2].difficulty);
+        Debug.Log("Dificultad: " + claseResponse.results[0].difficulty);
         //4º La Pregunta
-        Debug.Log("Pregunta: " + claseResponse.results[3].question);
+        Debug.Log("Pregunta: " + claseResponse.results[0].question);
+        //5º y extra Prueba de Respuesta
+        Debug.Log("Respuesta correcta: " + claseResponse.results[0].correct_answer);
     }
 }
